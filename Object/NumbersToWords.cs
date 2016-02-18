@@ -5,8 +5,8 @@ namespace NumbersToWordsNS.Objects
 {
   public class NumbersToWords
   {
-    int _number;
-    private static Dictionary<int, string> _oneThruNineteen = new Dictionary<int, string>
+    long _number;
+    private static Dictionary<long, string> _oneThruNineteen = new Dictionary<long, string>
     {
       {1, "one"},
       {2, "two"},
@@ -28,7 +28,7 @@ namespace NumbersToWordsNS.Objects
       {18, "eighteen"},
       {19, "nineteen"}
     };
-    private static Dictionary<int, string> _twentyThruNinety = new Dictionary<int, string>
+    private static Dictionary<long, string> _twentyThruNinety = new Dictionary<long, string>
     {
       {20, "twenty"},
       {30, "thirty"},
@@ -42,31 +42,31 @@ namespace NumbersToWordsNS.Objects
     };
 
 
-    public NumbersToWords(int number)
+    public NumbersToWords(long number)
     {
       _number = number;
 
     }
 
-    public Dictionary<int, string> GetOneThruNineteen()
+    public Dictionary<long, string> GetOneThruNineteen()
     {
       return _oneThruNineteen;
     }
 
-    public Dictionary<int, string> GetTwentyThruNinety()
+    public Dictionary<long, string> GetTwentyThruNinety()
     {
       return _twentyThruNinety;
     }
 
 
-    public string ThreeDigitConvert(int threeDigitNumber)
+    public string ThreeDigitConvert(long threeDigitNumber)
     {
       string output = "";
       string word;
-      int lastTwo = threeDigitNumber%100;
+      long lastTwo = threeDigitNumber%100;
       if (lastTwo>19)
       {
-        int tens = lastTwo/10;
+        long tens = lastTwo/10;
 
       this.GetTwentyThruNinety().TryGetValue(tens*10, out word);
         output += word + " ";
@@ -80,7 +80,7 @@ namespace NumbersToWordsNS.Objects
 
       if((threeDigitNumber/100) > 0)
       {
-         int hundreds = threeDigitNumber/100;
+         long hundreds = threeDigitNumber/100;
          this.GetOneThruNineteen().TryGetValue(hundreds, out word);
          output = word + " hundred " + output;
       }
@@ -90,13 +90,12 @@ namespace NumbersToWordsNS.Objects
 
     public string Convert()
     {
-      int convertNumber = _number;
+      long convertNumber = _number;
       string output = "";
       string billions = "";
       string millions = "";
       string thousands = "";
-      int threeString;
-      int dummyNumber;
+      long dummyNumber;
       if(convertNumber>1000000000)
       {
         dummyNumber = convertNumber/1000000000;

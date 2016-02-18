@@ -82,5 +82,11 @@ namespace NumbersToWordsNS.Objects
       NumbersToWords test = new NumbersToWords(555555555);
       Assert.Equal("five hundred fifty five million five hundred fifty five thousand five hundred fifty five", test.Convert());
     }
+    [Fact]
+    public void NumbersToWords_5555555555_fivehundredfiftyfivebillionfivehundredfiftyfivemillionfivehundredfiftyfivethousandfivehundredfiftyfive()
+    {
+      NumbersToWords test = new NumbersToWords(555555555555);
+      Assert.Equal("five hundred fifty five billion five hundred fifty five million five hundred fifty five thousand five hundred fifty five", test.Convert());
+    }
   }
 }
